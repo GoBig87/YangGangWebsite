@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Fin</title>
+<title>YANG GANG HATS</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -107,14 +107,98 @@ body, html {
 <div class="w3-container w3-row w3-center w3-purple w3-padding-64">
 </div>
 
+<!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
 <!-- Purchase Section -->
 <div class="w3-container" style="padding:64px 16px" id="purchase">
   <h3 class="w3-center">Purchase a Hat Today!</h3>
   <div class="w3-row-padding w3-center" style="margin-top:64px">
     <img src='{% static "images/yanggang/Yang_Hat_Front_View.png" %}'  style="width:25%">
-    <p><a href="http://www.yangpinkhats2020.com/purchase" class="w3-button w3-xxlarge w3-purple">Purchase a hat for $20.20!</a></p>
+  </div>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+    <button
+      style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+      id="checkout-button-sku_FRnuZCmtv3HSrV"
+      role="link"
+    >
+      Purchase a Medium Hat (56cm) for $20.20
+    </button>
+    <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+    <button
+      style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+      id="checkout-button-sku_FRnwvEvOCvSQDv"
+      role="link"
+    >
+      Purchase a Large Hat (58cm) for $20.20
+    </button>
   </div>
 </div>
+
+<!-- Medium hat -->
+<div id="error-message"></div>
+
+<script>
+  var stripe = Stripe('pk_test_tkRYvWCf9I9jLocQ3UZycNrl00HdJOSI8Y');
+
+  var checkoutButton = document.getElementById('checkout-button-sku_FRnuZCmtv3HSrV');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      items: [{sku: 'sku_FRnuZCmtv3HSrV', quantity: 1}],
+
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://www.yangpinkhats2020.com/success',
+      cancelUrl: 'https://www.yangpinkhats2020.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+</script>
+
+<!-- Larger hat -->
+<script>
+  var stripe = Stripe('pk_test_tkRYvWCf9I9jLocQ3UZycNrl00HdJOSI8Y');
+
+  var checkoutButton = document.getElementById('checkout-button-sku_FRnwvEvOCvSQDv');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      items: [{sku: 'sku_FRnwvEvOCvSQDv', quantity: 1}],
+
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://www.yangpinkhats2020.com/success',
+      cancelUrl: 'https://www.yangpinkhats2020.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+</script>
+
+
 
 <!-- Divider -->
 <div class="w3-container w3-row w3-center w3-purple w3-padding-64">
