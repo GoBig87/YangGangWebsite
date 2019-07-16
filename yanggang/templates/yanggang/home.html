@@ -131,7 +131,7 @@ body, html {
       id="checkout-button-sku_FRnwvEvOCvSQDv"
       role="link"
     >
-      Purchase a Large Hat (58cm) for $20.20
+      Purchase a Large Hat (56cm) for $20.20
     </button>
     <p class="w3-small">Note: Hats will be shipped to your billing address.
       In order to ship to a different address email admin@yangpinkhats2020.com with your email and
@@ -139,12 +139,7 @@ body, html {
   </div>
 </div>
 
-<!-- Medium hat -->
 <div id="error-message"></div>
-
-<script>
-<!-- Load Stripe.js on your website. -->
-<script src="https://js.stripe.com/v3"></script>
 
 <script>
   var stripe = Stripe('pk_test_tkRYvWCf9I9jLocQ3UZycNrl00HdJOSI8Y');
@@ -161,8 +156,9 @@ body, html {
       // a successful payment.
       // Instead use one of the strategies described in
       // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://yangpinthats2020.com/success',
-      cancelUrl: 'https://yangpinthats2020.com/canceled',
+      billingAddressCollection: 'required',
+      successUrl: 'https://your-website.com/success',
+      cancelUrl: 'https://your-website.com/canceled',
     })
     .then(function (result) {
       if (result.error) {
@@ -175,7 +171,6 @@ body, html {
   });
 </script>
 
-<!-- Larger hat -->
 <script>
   var stripe = Stripe('pk_test_tkRYvWCf9I9jLocQ3UZycNrl00HdJOSI8Y');
 
@@ -185,15 +180,15 @@ body, html {
     // them to Checkout.
     stripe.redirectToCheckout({
       items: [{sku: 'sku_FRnwvEvOCvSQDv', quantity: 1}],
-      billingAddressCollection: 'required',
+
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
       // a successful payment.
       // Instead use one of the strategies described in
       // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://yangpinkhats2020.com/success',
-      //cancelUrl: 'https://yangpinkhats2020.com/canceled',
-      cancelUrl: 'http://127.0.0.1:8000/canceled',
+      billingAddressCollection: 'required',
+      successUrl: 'https://yangpinkhats2020.com/succuess',
+      cancelUrl: 'https://yangpinkhats2020.com/canceled',
     })
     .then(function (result) {
       if (result.error) {
