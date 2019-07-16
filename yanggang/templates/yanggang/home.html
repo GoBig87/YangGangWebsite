@@ -120,7 +120,7 @@ body, html {
     <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
     <button
       style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-      id="checkout-button-sku_FRnuZCmtv3HSrV"
+      id="checkout-button-sku_FRsYgY0zy6dWXA"
       role="link"
     >
       Purchase a Medium Hat (56cm) for $20.20
@@ -128,7 +128,7 @@ body, html {
     <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
     <button
       style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-      id="checkout-button-sku_FRnwvEvOCvSQDv"
+      id="checkout-button-sku_FRsYnYmTTAnJUP"
       role="link"
     >
       Purchase a Large Hat (56cm) for $20.20
@@ -142,14 +142,14 @@ body, html {
 <div id="error-message"></div>
 
 <script>
-  var stripe = Stripe('pk_test_tkRYvWCf9I9jLocQ3UZycNrl00HdJOSI8Y');
+  var stripe = Stripe('pk_live_IsgWdjMjVQqUph0GluiCLIYa005S2gLMIS');
 
-  var checkoutButton = document.getElementById('checkout-button-sku_FRnuZCmtv3HSrV');
+  var checkoutButton = document.getElementById('checkout-button-sku_FRsYgY0zy6dWXA');
   checkoutButton.addEventListener('click', function () {
     // When the customer clicks on the button, redirect
     // them to Checkout.
     stripe.redirectToCheckout({
-      items: [{sku: 'sku_FRnuZCmtv3HSrV', quantity: 1}],
+      items: [{sku: 'sku_FRsYgY0zy6dWXA', quantity: 1}],
 
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
@@ -172,14 +172,14 @@ body, html {
 </script>
 
 <script>
-  var stripe = Stripe('pk_test_tkRYvWCf9I9jLocQ3UZycNrl00HdJOSI8Y');
+  var stripe = Stripe('pk_live_IsgWdjMjVQqUph0GluiCLIYa005S2gLMIS');
 
-  var checkoutButton = document.getElementById('checkout-button-sku_FRnwvEvOCvSQDv');
+  var checkoutButton = document.getElementById('checkout-button-sku_FRsYnYmTTAnJUP');
   checkoutButton.addEventListener('click', function () {
     // When the customer clicks on the button, redirect
     // them to Checkout.
     stripe.redirectToCheckout({
-      items: [{sku: 'sku_FRnwvEvOCvSQDv', quantity: 1}],
+      items: [{sku: 'sku_FRsYnYmTTAnJUP', quantity: 1}],
 
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
